@@ -1,0 +1,175 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:card_view="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:orientation="vertical"
+    tools:context=".Main">
+
+    <ScrollView
+        android:layout_width="fill_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:fillViewport="false">
+
+        <LinearLayout style="@style/CardContent">
+
+            <android.support.v7.widget.CardView
+                style="@style/MyCardView"
+                card_view:cardCornerRadius="2dp">
+
+                <LinearLayout
+                     style="@style/CardContent">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:paddingTop="8dp"
+                        android:text="Media Volume" />
+
+                    <SeekBar
+                        android:id="@+id/MediaVolume"
+                        android:theme="@style/SeekBarGreen"
+                        style="@style/SeekBarGreen"/>
+
+                    <CheckBox
+                        android:id="@+id/BluetoothMediaCheckbox"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginRight="6dp"
+                        android:checked="false"
+                        android:text="Bluetooth Media Volume"
+                        android:textSize="14sp" />
+
+                    <SeekBar
+                        android:id="@+id/BluetoothMediaVolume"
+                        style="@style/SeekBarBlue" />
+
+                </LinearLayout>
+            </android.support.v7.widget.CardView>
+
+            <android.support.v7.widget.CardView
+                style="@style/MyCardView"
+                card_view:cardCornerRadius="2dp">
+
+                <LinearLayout
+                     style="@style/CardContent">
+
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:paddingTop="8dp"
+                        android:text="Ringtone Volume" />
+
+                    <SeekBar
+                        android:id="@+id/RingVolume"
+                        android:theme="@style/SeekBarGreen"
+                        style="@style/SeekBarGreen" />
+
+                    <CheckBox
+                        android:id="@+id/BluetoothRingCheckbox"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginRight="6dp"
+                        android:checked="false"
+                        android:text="Bluetooth Ringtone Volume"
+                        android:textSize="14sp" />
+
+                    <SeekBar
+                        android:id="@+id/BluetoothRingVolume"
+                        style="@style/SeekBarBlue" />
+                </LinearLayout>
+            </android.support.v7.widget.CardView>
+
+            <android.support.v7.widget.CardView
+                style="@style/MyCardView"
+                card_view:cardCornerRadius="2dp">
+
+                <LinearLayout
+                    style="@style/CardContent">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:paddingTop="8dp"
+                        android:text="Notification Volume" />
+
+                    <SeekBar
+                        android:id="@+id/NotifyVolume"
+                        android:theme="@style/SeekBarGreen"
+                        style="@style/SeekBarGreen" />
+
+                    <CheckBox
+                        android:id="@+id/BluetoothNotifyCheckbox"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginRight="6dp"
+                        android:checked="false"
+                        android:text="Bluetooth Notification Volume"
+                        android:textSize="14sp" />
+
+                    <SeekBar
+                        android:id="@+id/BluetoothNotifyVolume"
+                        style="@style/SeekBarBlue" />
+
+                </LinearLayout>
+            </android.support.v7.widget.CardView>
+
+            <android.support.v7.widget.CardView
+                style="@style/MyCardView"
+                card_view:cardCornerRadius="2dp">
+
+                <LinearLayout
+                     style="@style/CardContent">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:paddingTop="8dp"
+                        android:text="In Call Volume" />
+
+                    <SeekBar
+                        android:id="@+id/CallVolume"
+                        android:theme="@style/SeekBarGreen"
+                        style="@style/SeekBarGreen" />
+
+                    <CheckBox
+                        android:id="@+id/BluetoothCallCheckbox"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginRight="6dp"
+                        android:checked="false"
+                        android:text="Bluetooth In Call Volume"
+                        android:textSize="14sp" />
+
+                    <SeekBar
+                        android:id="@+id/BluetoothCallVolume"
+                        style="@style/SeekBarBlue"/>
+
+                </LinearLayout>
+            </android.support.v7.widget.CardView>
+
+            <android.support.v7.widget.CardView
+                style="@style/MyCardView"
+                card_view:cardCornerRadius="2dp"
+                android:layout_marginBottom="16dp">
+
+                <LinearLayout
+                    style="@style/CardContent">
+
+                    <CheckBox
+                        android:id="@+id/ShouldLaunchCarHome"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Launch Car Home when connected to Bluetooth" />
+                </LinearLayout>
+            </android.support.v7.widget.CardView>
+
+        </LinearLayout>
+
+    </ScrollView>
+
+</LinearLayout>

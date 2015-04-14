@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+<style name="Theme" parent="android:Theme.Holo.Light.DarkActionBar">
+    <item name="android:actionBarStyle">@style/MyActionBar</item>
+</style>
+
+
+    <!-- ActionBar styles -->
+    <style name="MyActionBar"
+        parent="@android:style/Widget.Holo.Light.ActionBar.Solid.Inverse">
+        <item name="android:background">@color/primary</item>
+    </style>
+
+    <style name="SeekBar" parent="android:Widget.Holo.Light.SeekBar">
+        <item name="android:layout_width">fill_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+    </style>
+
+    <style name="SeekBarBlue" parent="SeekBar">
+        <item name="android:progressDrawable">@drawable/seekbarblue_scrubber_progress_horizontal_holo_light</item>
+        <item name="android:indeterminateDrawable">@drawable/seekbarblue_scrubber_progress_horizontal_holo_light</item>
+        <item name="android:thumb">@drawable/seekbarblue_scrubber_control_selector_holo_light</item>
+    </style>
+
+    <style name="SeekBarGreen" parent="SeekBar">
+        <item name="android:progressDrawable">@drawable/seekbargreen_scrubber_progress_horizontal_holo_light</item>
+        <item name="android:indeterminateDrawable">@drawable/seekbargreen_scrubber_progress_horizontal_holo_light</item>
+        <item name="android:thumb">@drawable/seekbargreen_scrubber_control_selector_holo_light</item>
+        <item name="android:layout_marginBottom">16dp</item>
+    </style>
+
+    <style name="MyCardView">
+        <item name="android:layout_width">fill_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_marginBottom">8dp</item>
+    </style>
+
+    <style name="CardContent">
+        <item name="android:layout_width">fill_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_margin">8dp</item>
+        <item name="android:orientation">vertical</item>
+    </style>
+
+</resources>

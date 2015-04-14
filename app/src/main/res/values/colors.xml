@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+<color name="blue">#00F</color>
+<color name="title_background">#ff355689</color>
+<color name="title_text">#fff</color>
+
+    <color name="primary">#2196F3</color>
+    <color name="primary_dark">#1976D2</color>
+    <color name="accent">#03A9F4</color>
+
+    <color name="green_seek_bar">#CDDC39</color>
+
+
+</resources>
