@@ -18,9 +18,9 @@
 
         <receiver android:name=".BluetoothReceiver">
             <intent-filter>
-                <action android:name="android.bluetooth.device.action.ACL_CONNECTED" />
-                <action android:name="android.bluetooth.device.action.ACL_DISCONNECTED" />
                 <action android:name="android.bluetooth.adapter.action.STATE_CHANGED" />
+                <action android:name="android.bluetooth.a2dp.profile.action.CONNECTION_STATE_CHANGED" />
+                <action android:name="android.bluetooth.headset.profile.action.CONNECTION_STATE_CHANGED" />
 
             </intent-filter>
         </receiver>
@@ -32,7 +32,7 @@
             <!--</intent-filter>-->
         <!--</receiver>-->
 
-        <!--&lt;!&ndash; The application's publisher ID assigned by AdMob &ndash;&gt;-->
+        <!-- The application's publisher ID assigned by AdMob -->
         <!--<meta-data android:value="a14c7daff307179" android:name="ADMOB_PUBLISHER_ID" />-->
 
         <!--<receiver android:name="com.google.android.apps.analytics.AnalyticsReceiver"-->

@@ -5,6 +5,10 @@ import android.app.ActionBar;
 import android.app.Activity;
 import android.app.AlarmManager;
 import android.app.AlertDialog;
+import android.bluetooth.BluetoothAdapter;
+import android.bluetooth.BluetoothHeadset;
+import android.bluetooth.BluetoothManager;
+import android.bluetooth.BluetoothProfile;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
@@ -149,28 +153,6 @@ public class Main extends Activity {
 
         EventBus.getDefault().register(this); // register EventBus
 
-//        IntentFilter IF = new IntentFilter(ACTION_STOP_RINGTONE);
-//        IF.addAction(ACTION_STOP_CALLTONE);
-//
-//        registerReceiver( broadcastReceiver = new BroadcastReceiver(){
-//            @Override
-//            public void onReceive(Context arg0, Intent arg1) {
-//                if(arg1.getAction() == ACTION_STOP_RINGTONE)
-//                {
-//                    asyncPlayer.stop();
-//                    //audioManager.setStreamVolume(AudioManager.STREAM_RING, ringVolume.getProgress(), 0);
-//                    Log.v("alarm", "stopRingtone");
-//                }
-//                else
-//                {
-//                    //audioManager.setStreamVolume(AudioManager.STREAM_NOTIFICATION, savedNotifyVolume, 0);
-//                    asyncPlayer.stop();
-//                    Log.v("alarm", "stopCalltone");
-//                }
-//            }
-//        },IF);
-
-
         if(android.os.Build.VERSION.SDK_INT < 8) //less than froyo
             shouldLaunchCarHome.setVisibility(View.GONE);
 
@@ -226,8 +208,8 @@ public class Main extends Activity {
 
         blueNotifyVolume.setMax(audioManager.getStreamMaxVolume(AudioManager.STREAM_NOTIFICATION));
         blueNotifyVolume.setOnSeekBarChangeListener(seekListener);
+        
     }
-
 
     @Override
     protected void onResume() {
@@ -315,10 +297,10 @@ public class Main extends Activity {
             activeNotifyVolume = notifyVolume;
             savedNotifyVolume = blueNotifyVolume;
 
-            savedMediaVolumeValue = sharedSettings.getInt(KEY_BLUE_MEDIA_VOLUME, audioManager.getStreamVolume(AudioManager.STREAM_MUSIC));
-            savedRingVolumeValue = sharedSettings.getInt(KEY_BLUE_RING_VOLUME, audioManager.getStreamVolume(AudioManager.STREAM_RING));
-            savedCallVolumeValue = sharedSettings.getInt(KEY_BLUE_CALL_VOLUME, audioManager.getStreamVolume(AudioManager.STREAM_VOICE_CALL));
-            savedNotifyVolumeValue = sharedSettings.getInt(KEY_BLUE_NOTIFY_VOLUME, audioManager.getStreamVolume(AudioManager.STREAM_NOTIFICATION));
+            savedMediaVolumeValue = sharedSettings.getInt(KEY_BLUE_MEDIA_VOLUME, 0);
+            savedRingVolumeValue = sharedSettings.getInt(KEY_BLUE_RING_VOLUME, 0);
+            savedCallVolumeValue = sharedSettings.getInt(KEY_BLUE_CALL_VOLUME, 0);
+            savedNotifyVolumeValue = sharedSettings.getInt(KEY_BLUE_NOTIFY_VOLUME, 0);
 
         }
 
@@ -327,10 +309,14 @@ public class Main extends Activity {
         activeCallVolume.setProgress(audioManager.getStreamVolume(AudioManager.STREAM_VOICE_CALL));
         activeNotifyVolume.setProgress(audioManager.getStreamVolume(AudioManager.STREAM_NOTIFICATION));
 
-        savedMediaVolume.setProgress(savedMediaVolumeValue);
-        savedRingVolume.setProgress(savedRingVolumeValue);
-        savedCallVolume.setProgress(savedCallVolumeValue);
-        savedNotifyVolume.setProgress(savedNotifyVolumeValue);
+        if(blueMediaCheckbox.isChecked())
+            savedMediaVolume.setProgress(savedMediaVolumeValue);
+        if(blueRingCheckbox.isChecked())
+            savedRingVolume.setProgress(savedRingVolumeValue);
+        if(blueCallCheckbox.isChecked())
+            savedCallVolume.setProgress(savedCallVolumeValue);
+        if(blueNotifyCheckbox.isChecked())
+            savedNotifyVolume.setProgress(savedNotifyVolumeValue);
     }
 
     @Override
@@ -354,7 +340,6 @@ public class Main extends Activity {
 
     }
 
-    @TargetApi(Build.VERSION_CODES.JELLY_BEAN_MR1)
     @OnCheckedChanged({R.id.BluetoothMediaCheckbox, R.id.BluetoothRingCheckbox, R.id.BluetoothCallCheckbox,  R.id.BluetoothNotifyCheckbox, R.id.ShouldLaunchCarHome})
     public void onCheckedChanged(CompoundButton buttonView,boolean isChecked) {
         switch(buttonView.getId()) {
@@ -415,7 +400,6 @@ public class Main extends Activity {
             }
         editor.commit();
         setVolumeLevels();
-
     }
 
     private OnSeekBarChangeListener seekListener = new OnSeekBarChangeListener(){
